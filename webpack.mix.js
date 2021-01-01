@@ -20,4 +20,6 @@ mix.options({
 });
 
 mix.js('resources/js/app.js', 'js')
-    .postCss('resources/css/app.css', 'css');
+    .postCss('resources/css/app.css', 'css', [
+        require("tailwindcss"),
+    ]);
