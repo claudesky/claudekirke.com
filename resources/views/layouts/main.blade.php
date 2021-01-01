@@ -22,8 +22,18 @@
         <link rel="stylesheet" href="{{ mix('css/app.css', config('app.manifest_path')) }}">
 
     </head>
-    <body class="antialiased">
-        @yield('content')
+    <body class="antialiased bg-gray-700 text-white">
+        <nav class="container mx-auto py-4 uppercase">
+            <ul class="flex justify-between space-x-10">
+                <li><a class="text-xl" href="#">Home</a></li>
+                <li class="flex-1"></li>
+                <li><a class="text-xl" href="#">About</a></li>
+                <li><a class="text-xl" href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <main class="container mx-auto">
+            @yield('content')
+        </main>
         <script src="{{ mix('js/app.js', config('app.manifest_path')) }}"></script>
     </body>
 </html>
