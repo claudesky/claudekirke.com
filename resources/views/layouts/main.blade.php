@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta property="og:title" content="Claude Kirke">
+        <meta property="og:type" content="profile">
+        <meta property="og:url" content="https://claudekirke.com/">
+        <meta property="og:image" content="https://claudekirke.com/img/claude_kirke.jpg">
+        <meta property="og:description" content="I am a full-stack developer. Laravel, Vue, Linux, Docker, and Git are my best friends! Check out what I can do in my portfolio.">
+
         <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png?v=1">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
