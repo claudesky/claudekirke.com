@@ -43,10 +43,10 @@
     <body class="min-h-screen antialiased bg-gray-700 text-white flex flex-col">
         <nav class="container mx-auto py-4 uppercase">
             <ul class="flex justify-between space-x-10 px-4">
-                <li><a class="lg:text-lg" href="#">Home</a></li>
+                <li><a class="lg:text-lg" href="{{ route('home') }}">Home</a></li>
                 <li class="flex-1"></li>
-                <li><a class="lg:text-lg" href="#">About</a></li>
-                <li><a class="lg:text-lg" href="#">Contact</a></li>
+                <li><a class="lg:text-lg" href="{{ route('about') }}">About</a></li>
+                <li><a class="lg:text-lg" href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav>
         <main class="container mx-auto">
