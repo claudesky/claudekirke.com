@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="text-6xl lg:text-8xl font-serif font-thin tracking-wider text-center mt-24">
+    <h1 class="px-2 text-4xl md:text-6xl lg:text-8xl font-serif font-thin tracking-wider text-center mt-24">
         Claude Kirke
     </h1>
     <section class="container py-24 p-6 md:p-12 lg:p-24 space-y-6">
