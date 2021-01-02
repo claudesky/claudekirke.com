@@ -31,10 +31,10 @@
     <body class="antialiased bg-gray-700 text-white">
         <nav class="container mx-auto py-4 uppercase">
             <ul class="flex justify-between space-x-10">
-                <li><a class="text-xl" href="#">Home</a></li>
+                <li><a class="text-lg" href="#">Home</a></li>
                 <li class="flex-1"></li>
-                <li><a class="text-xl" href="#">About</a></li>
-                <li><a class="text-xl" href="#">Contact</a></li>
+                <li><a class="text-lg" href="#">About</a></li>
+                <li><a class="text-lg" href="#">Contact</a></li>
             </ul>
         </nav>
         <main class="container mx-auto">
