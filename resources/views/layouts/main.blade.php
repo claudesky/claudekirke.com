@@ -25,6 +25,8 @@
             <title>{{ config('app.name') }}</title>
         @endif
 
+        <meta name="description" content="I am a full-stack developer. Laravel, Vue, Linux, Docker, and Git are my best friends! Check out what I can do in my portfolio.">
+
         <link rel="stylesheet" href="{{ mix('css/app.css', config('app.manifest_path')) }}">
 
     </head>
