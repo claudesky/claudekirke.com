@@ -7,8 +7,8 @@
             <img
                 class="h-36 md:h-48 lg:h-64"
                 src="/img/undraw_Online_information_re_erks.svg"
-                alt="working on it"
-                title="Working on it! Check back again in a few days.">
+                alt="privacy policy image"
+                title="How we handle your information.">
         </div>
     </div>
     <h1 class="px-4 text-xl text-center mt-8 lg:mt-16">
