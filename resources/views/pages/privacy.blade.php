@@ -2,7 +2,16 @@
 
 @section('content')
 
-    <h1 class="px-4 text-xl text-center mt-24">
+    <div class="container mx-auto">
+        <div class="flex justify-around mx-12 lg:mx-24 xl:mx-48 2xl:mx-96 pt-8">
+            <img
+                class="h-36 md:h-48 lg:h-64"
+                src="/img/undraw_Online_information_re_erks.svg"
+                alt="working on it"
+                title="Working on it! Check back again in a few days.">
+        </div>
+    </div>
+    <h1 class="px-4 text-xl text-center mt-8 lg:mt-16">
         Privacy Policy
     </h1>
     <section class="text-gray-300 text-xs lg:text-sm xl:text-base container py-12 lg:py-24 p-6 md:p-12 lg:p-24 space-y-6">
