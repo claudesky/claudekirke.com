@@ -40,7 +40,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css', config('app.manifest_path')) }}">
 
     </head>
-    <body class="antialiased bg-gray-700 text-white">
+    <body class="min-h-screen antialiased bg-gray-700 text-white flex flex-col">
         <nav class="container mx-auto py-4 uppercase">
             <ul class="flex justify-between space-x-10 px-4">
                 <li><a class="lg:text-lg" href="#">Home</a></li>
@@ -52,6 +52,18 @@
         <main class="container mx-auto">
             @yield('content')
         </main>
+        <div class="flex-grow"></div>
+        <footer class="text-sm text-gray-300 container mx-auto p-4 pb-8 flex flex-col space-y-4 2xl:space-y-8">
+            <div class="flex justify-center space-x-4 lg:space-x-8">
+                <a href="{{ route('terms') }}">Terms of Service</a>
+                <a href="{{ route('privacy') }}">Privacy Policy</a>
+            </div>
+            <div class="text-gray-400 flex justify-center">
+                <small>
+                    Copyright &copy; 2021 - Claude Kirke - All Rights Reserved
+                </small>
+            </div>
+        </footer>
         <script src="{{ mix('js/app.js', config('app.manifest_path')) }}"></script>
     </body>
 </html>
