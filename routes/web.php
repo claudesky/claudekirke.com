@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/privacy', function () {
+    return view('pages.privacy');
+})->name('privacy');
+
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
