@@ -59,9 +59,11 @@
             This data is shared with other Google services. Google may use the collected data to contextualize and
             personalize the ads of its own advertising network.
         </p>
+        <p>
             You can opt-out of having made your activity on the Service available to Google Analytics by installing
             the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js,
             analytics.js, and dc.js) from sharing information with Google Analytics about visits activity.
+        </p>
         <p>
             For more information on the privacy practices of Google, please visit the
             <a class="border-b" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy & Terms</a> web page.
