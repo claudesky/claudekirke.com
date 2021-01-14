@@ -1,0 +1,91 @@
+name: Run Tests and Deploy to Staging
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    env:
+      SSH_PRIVATE_KEY_STAGING: ${{secrets.SSH_PRIVATE_KEY_STAGING}}
+      SSH_KNOWN_HOSTS_STAGING: ${{secrets.SSH_KNOWN_HOSTS_STAGING}}
+      DEPLOY_PATH_STAGING: ${{secrets.DEPLOY_PATH_STAGING}}
+      SSH_USER_STAGING: ${{secrets.SSH_USER_STAGING}}
+      SSH_HOST_STAGING: ${{secrets.SSH_HOST_STAGING}}
+      SSH_KEY_PATH: ${{ github.workspace }}/../private.key
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install composer dependencies
+      if: steps.composer-cache.outputs.cache-hit != 'true'
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Cache NPM packages
+      id: npm-cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install node dependencies
+      if: steps.npm-cache.outputs.cache-hit != 'true'
+      run: npm ci
+
+    - name: Copy .env.example into .env
+      run: cp .env.example .env
+
+    - name: Generate encryption key
+      run: ./artisan key:generate
+      
+    - name: Build js and css
+      run: npm run dev
+
+    - name: Run test suite
+      run: ./artisan test
+    
+    - name: Create SSH key
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_PRIVATE_KEY_STAGING" > ../private.key
+        sudo chmod 600 ../private.key
+        echo "$SSH_KNOWN_HOSTS_STAGING" > ~/.ssh/known_hosts
+      shell: bash
+    
+    - name: Fetch changes and reset
+      run: |
+        ssh -t -i $SSH_KEY_PATH $SSH_USER_STAGING@$SSH_HOST_STAGING \
+          "cd ${DEPLOY_PATH_STAGING} && \
+          git reset --hard && \
+          git checkout master && \
+          git fetch origin master && \
+          git reset --hard origin/master \
+          "
+
+    - name: Deploy composer dependencies
+      run: rsync --links -re "ssh -i $SSH_KEY_PATH" vendor/ $SSH_USER_STAGING@$SSH_HOST_STAGING:${DEPLOY_PATH_STAGING}/vendor/
+
+    - name: Deploy compiled assets
+      run: rsync -re "ssh -i $SSH_KEY_PATH" public/ $SSH_USER_STAGING@$SSH_HOST_STAGING:${DEPLOY_PATH_STAGING}/public/
+    
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: laravel-failure-artifact
+        path: storage/logs/laravel.log
