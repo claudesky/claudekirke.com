@@ -27,7 +27,7 @@ services:
             - ./:/var/www/html
         depends_on:
             - redis
-    
+
     redis:
         image: redis
         restart: always
