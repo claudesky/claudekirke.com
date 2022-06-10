@@ -20,6 +20,8 @@ WORKDIR /app
 
 COPY composer.json composer.lock ./
 
+RUN composer validate
+
 RUN composer install \
     --no-dev \
     --no-ansi \
