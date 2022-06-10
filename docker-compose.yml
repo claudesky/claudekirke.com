@@ -5,9 +5,8 @@ services:
         build:
             context: ./
             dockerfile: .docker/nginx/Dockerfile
+        env_file: .env
         restart: always
-        volumes:
-            - public:/var/www/html/public:ro
         depends_on:
             - php
 
@@ -17,8 +16,3 @@ services:
             dockerfile: .docker/php/Dockerfile
         env_file: .env
         restart: always
-        volumes:
-            - public:/var/www/html/public:ro
-
-volumes:
-    public:

@@ -1,3 +1,19 @@
+FROM node:alpine as node
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm i
+
+COPY public public
+
+COPY resources resources
+
+COPY webpack.mix.js tailwind.config.js ./
+
+RUN npm run prod
+
 FROM composer as composer
 
 WORKDIR /app
@@ -58,7 +74,7 @@ COPY --from=composer /app/composer.json /app/composer.lock ./
 RUN mkdir -p storage/framework/views && chown www-data storage/framework/views
 
 COPY bootstrap bootstrap
-COPY public public
+COPY --from=node /app/public public
 COPY config config
 COPY database database
 COPY resources resources
@@ -67,7 +83,5 @@ COPY routes routes
 COPY app app
 
 RUN composer run --no-ansi --no-interaction post-autoload-dump
-
-VOLUME [ "/var/www/html/public" ]
 
 CMD ["/entrypoint.sh"]
