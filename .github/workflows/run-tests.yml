@@ -51,15 +51,12 @@ jobs:
     - name: Generate encryption key
       run: ./artisan key:generate
 
-    - name: Link storage directories
-      run: ./artisan storage:link --relative
-      
     - name: Build js and css
       run: npm run dev
 
     - name: Run test suite
       run: ./artisan test
-    
+
     - uses: actions/upload-artifact@v2
       if: failure()
       with:

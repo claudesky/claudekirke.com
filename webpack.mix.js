@@ -9,15 +9,15 @@ if (process.env.NODE_ENV == 'production'){
 
     mix.setPublicPath('public/dev');
 
-}
+    let url = process.env.APP_URL.replace(/(^\w+:|^)\/\//, '');
+    mix.options({
+       hmrOptions: {
+           host: url,
+           port: 8080
+       }
+    });
 
-let url = process.env.APP_URL.replace(/(^\w+:|^)\/\//, '');
-mix.options({
-   hmrOptions: {
-       host: url,
-       port: 8080
-   }
-});
+}
 
 mix.js('resources/js/app.js', 'js')
     .postCss('resources/css/app.css', 'css', [

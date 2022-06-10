@@ -8,14 +8,13 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8",
+        "doctrine/dbal": "^3.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5",
-        "predis/predis": "^1.1",
-        "symfony/filesystem": "^5.2"
+        "laravel/framework": "^8",
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -27,7 +26,25 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "ext-ctype": false,
+            "ext-curl": "8.1.6",
+            "ext-dom": "20031129",
+            "ext-fileinfo": "8.1.6",
+            "ext-filter": "8.1.6",
+            "ext-json": "8.1.6",
+            "ext-libxml": "8.1.6",
+            "ext-mbstring": false,
+            "ext-openssl": "8.1.6",
+            "ext-pcre": "8.1.6",
+            "ext-phar": "8.1.6",
+            "ext-tokenizer": "8.1.6",
+            "ext-xml": "8.1.6",
+            "ext-xmlwriter": "8.1.6",
+            "lib-pcre": "10.39",
+            "php": "8.1.6"
+        }
     },
     "extra": {
         "laravel": {
