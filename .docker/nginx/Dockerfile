@@ -18,4 +18,6 @@ FROM nginx:1.21.6-alpine
 
 COPY .docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
+RUN mkdir -p /data/nginx && chown nginx /data/nginx
+
 COPY --from=node /app/public /var/www/html/public
