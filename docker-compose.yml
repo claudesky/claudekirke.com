@@ -2,6 +2,7 @@ version: "3"
 
 services:
     nginx:
+        image: registry.digitalocean.com/claudesky/claudekirkecom_nginx
         build:
             context: ./
             dockerfile: .docker/nginx/Dockerfile
@@ -11,6 +12,7 @@ services:
             - php
 
     php:
+        image: registry.digitalocean.com/claudesky/claudekirkecom_php
         build:
             context: ./
             dockerfile: .docker/php/Dockerfile
